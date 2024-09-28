@@ -1,6 +1,7 @@
 body{
     margin: 0;
     padding: 0;
+    background-color: #b64b93;
 }
 
 nav{
@@ -16,4 +17,11 @@ nav h1 {
 .contenido{
     display: flex;
     margin: 20px 0;
+    justify-content: center;
+
+}
+
+.form-card{
+    background-color: white;
+    display: flex;
 }
