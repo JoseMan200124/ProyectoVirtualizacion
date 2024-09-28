@@ -24,4 +24,50 @@ nav h1 {
 .form-card{
     background-color: white;
     display: flex;
+    padding: 20px 30px;
+    border-radius: 10px;
+    width: 40%;
+}
+
+label{
+    padding-right: 10px;
+}
+
+.row{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+#formulario{
+    width: 100%;
+}
+
+input{
+    width: 80%;
+}
+
+.row-submit{
+    display: flex;
+    justify-content: center;
+}
+
+.row-submit input{
+    padding: 5px 0;
+    background-color: #ac4493;
+}
+
+.row-submit #submit{
+    padding: 5px 0;
+    background-color: #ac4493;
+    border: none;
+}
+
+#submit{
+    border-radius: 20px;
+}
+
+#submit:hover{
+    background-color: #6f245e;
+    color: white;
 }
