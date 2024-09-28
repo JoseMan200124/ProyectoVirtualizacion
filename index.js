@@ -1,8 +1,11 @@
 const express = require('express');
+const cors = require('cors');  // Importar cors
 const app = express();
 const port = 3000;
 
 const db = require('./db/connection');
+
+app.use(cors());
 
 app.use(express.json());
 
