@@ -1,7 +1,6 @@
 document.getElementById('formulario').addEventListener('submit', async function (event) {
     event.preventDefault();
 
-
     const nombre = document.getElementById('fname').value;
     const apellido = document.getElementById('lname').value;
     const carnet = document.getElementById('carnet').value;
@@ -9,7 +8,7 @@ document.getElementById('formulario').addEventListener('submit', async function 
     const nota = document.getElementById('nota').value;
 
     try {
-        const estudianteResponse = await fetch('http://localhost:3000/estudiantes', {
+        const estudianteResponse = await fetch('http://34.135.118.84/api/estudiantes', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -26,7 +25,7 @@ document.getElementById('formulario').addEventListener('submit', async function 
         if (estudianteResponse.ok) {
             const estudianteId = estudianteData.estudianteId;
 
-            const cursoResponse = await fetch('http://localhost:3000/cursos-estudiantes', {
+            const cursoResponse = await fetch(`http://34.135.118.84/api/cursos-estudiantes`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
