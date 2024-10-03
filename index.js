@@ -49,6 +49,22 @@ app.post('/cursos-estudiantes', (req, res) => {
     });
 });
 
+app.get('/estudiantes-cursos', (req, res) => {
+    const query = `
+        SELECT e.id, e.nombre, e.apellido, e.carnet, c.curso, c.nota
+        FROM estudiantes e
+        LEFT JOIN cursos_estudiantes c ON e.id = c.estudiante_id
+    `;
+
+    db.query(query, (err, result) => {
+        if (err) {
+            console.error('Error al obtener estudiantes:', err);
+            return res.status(500).send('Error al obtener estudiantes');
+        }
+        res.json(result);
+    });
+});
+
 
 /**
  * Endpoint para añadir un nuevo estudiante con su curso y nota
