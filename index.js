@@ -11,21 +11,44 @@ app.use(express.json());
 /**
  * Endpoint para obtener todos los estudiantes con sus respectivos cursos y notas
  */
-app.get('/estudiantes-cursos', (req, res) => {
-    const query = `
-        SELECT e.id, e.nombre, e.apellido, e.carnet, c.curso, c.nota
-        FROM estudiantes e
-        LEFT JOIN cursos_estudiantes c ON e.id = c.estudiante_id
-    `;
+app.post('/estudiantes', (req, res) => {
+    const { nombre, apellido, carnet } = req.body;
 
-    db.query(query, (err, result) => {
+    if (!nombre || !apellido || !carnet) {
+        return res.status(400).send('Todos los campos son obligatorios');
+    }
+
+    const query = 'INSERT INTO estudiantes (nombre, apellido, carnet) VALUES (?, ?, ?)';
+    db.query(query, [nombre, apellido, carnet], (err, result) => {
         if (err) {
-            console.error('Error al obtener estudiantes:', err);
-            return res.status(500).send('Error al obtener estudiantes');
+            console.error('Error al insertar estudiante:', err);
+            return res.status(500).send('Error al insertar estudiante');
         }
-        res.json(result);
+        const estudianteId = result.insertId;
+        res.status(201).json({
+            message: 'Estudiante insertado exitosamente',
+            estudianteId: estudianteId
+        });
     });
 });
+
+app.post('/cursos-estudiantes', (req, res) => {
+    const { estudiante_id, curso, nota } = req.body;
+
+    if (!estudiante_id || !curso || nota === undefined) {
+        return res.status(400).send('Todos los campos son obligatorios');
+    }
+
+    const query = 'INSERT INTO cursos_estudiantes (estudiante_id, curso, nota) VALUES (?, ?, ?)';
+    db.query(query, [estudiante_id, curso, nota], (err, result) => {
+        if (err) {
+            console.error('Error al insertar curso y nota:', err);
+            return res.status(500).send('Error al insertar curso y nota');
+        }
+        res.status(201).send('Curso y nota insertados exitosamente');
+    });
+});
+
 
 /**
  * Endpoint para añadir un nuevo estudiante con su curso y nota
