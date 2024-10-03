@@ -8,7 +8,7 @@ document.getElementById('formulario').addEventListener('submit', async function 
     const nota = document.getElementById('nota').value;
 
     try {
-        const estudianteResponse = await fetch('http://34.135.118.84/api/estudiantes', {
+        const estudianteResponse = await fetch('http://localhost/api/cursos-estudiantes', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -25,7 +25,7 @@ document.getElementById('formulario').addEventListener('submit', async function 
         if (estudianteResponse.ok) {
             const estudianteId = estudianteData.estudianteId;
 
-            const cursoResponse = await fetch(`http://34.135.118.84/api/cursos-estudiantes`, {
+            const cursoResponse = await fetch(`http://localhost/api/cursos-estudiantes`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

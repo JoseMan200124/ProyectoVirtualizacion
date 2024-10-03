@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="tabla.css">
+    <title>Tabla de Estudiantes</title>
+</head>
+
+<body>
+<nav>
+    <h1>Instancia X</h1>
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="tabla.html">Ver Estudiantes</a></li>
+    </ul>
+</nav>
+
+<!-- Formulario para agregar un estudiante -->
+<div class="contenido">
+    <div class="formulario-agregar">
+        <input type="text" id="input-nombre" placeholder="Nombre">
+        <input type="text" id="input-apellido" placeholder="Apellido">
+        <input type="text" id="input-carnet" placeholder="Carnet">
+        <input type="text" id="input-curso" placeholder="Curso">
+        <input type="number" id="input-nota" placeholder="Nota">
+        <button id="agregar-btn">Añadir Estudiante</button>
+    </div>
+
+    <!-- Tabla para mostrar los estudiantes -->
+    <div class="table-container">
+        <table id="tabla-estudiantes">
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Carnet</th>
+                <th>Curso</th>
+                <th>Nota</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Los datos se cargarán dinámicamente aquí -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="tabla.js"></script>
+</body>
+
+</html>
